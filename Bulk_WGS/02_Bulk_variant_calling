@@ -1,0 +1,9 @@
+#!/bin/bash
+
+samtools mpileup -r ${chr} -q 50 -Q 20 -t DP,DV -gf hg19.fa ${data_dir}/${sample}.RG.markdup.bam | bcftools call -mv -Ob -o output.${chr}.bcf 
+
+bcftools view -i'TYPE="INDEL"' output.${chr}.bcf   | grep -v ^# | awk '{print $1,$2}' > indel.${chr}.txt
+
+
+
+bcftools view -i'TYPE="SNP"  && QUAL > 50 && DP4[2]+DP4[3]>=4' output.${chr}.bcf   | grep -v ^#  > snp.${chr}.txt
