@@ -9,11 +9,6 @@ import pysam
 wd = sys.argv[1]
 bam_in, bam_out_prefix = sys.argv[2], sys.argv[3]
 
-'''
-wd="/Users/mniu/Downloads/NanoSeq/script/test_run"
-bam_in="test.bam"
-bam_out_prefix="0000"
-'''
 
 os.chdir(wd)
 
