@@ -56,14 +56,14 @@ cat ${sample}_[A-Z][A-Z][A-Z]_a4s2_mutation_bulk_filtered.vcf  > ${data_dir}/${s
 cd ${data_dir}
 
 cat ${sample}_a4s2_mutation_bulk_filtered.vcf | awk '$1 ~ /^#/ {print $0;next} {print $0 | "sort -k1,1 -k2,2n"}' > ${sample}_a4s2_mutation_bulk_filtered_sorted.vcf
-java -jar SnpSift.jar annotate All_20151104.vcf ${sample}_a4s2_mutation_bulk_filtered_sorted.vcf > ${sample}_a4s2_mutation_bulk_filtered_sifted.vcf
+java -jar SnpSift.jar annotate dbSNP/All_20151104.vcf ${sample}_a4s2_mutation_bulk_filtered_sorted.vcf > ${sample}_a4s2_mutation_bulk_filtered_sifted.vcf
 grep -v rs ${sample}_a4s2_mutation_bulk_filtered_sifted.vcf | grep -v "^#" > ${sample}_a4s2_mutation_dbSNP_filtered.vcf
 rm ${sample}_a4s2_mutation_bulk_filtered_sifted.vcf
 rm ${sample}_a4s2_mutation_bulk_filtered_sorted.vcf
 
 
 cat ${sample}_a4s2_ss_var_bulk_filtered.vcf | awk '$1 ~ /^#/ {print $0;next} {print $0 | "sort -k1,1 -k2,2n"}' > ${sample}_a4s2_ss_var_bulk_filtered_sorted.vcf
-java -jar SnpSift.jar annotate All_20151104.vcf ${sample}_a4s2_ss_var_bulk_filtered_sorted.vcf > ${sample}_a4s2_ss_var_bulk_filtered_sifted.vcf
+java -jar SnpSift.jar annotate dbSNP/All_20151104.vcf ${sample}_a4s2_ss_var_bulk_filtered_sorted.vcf > ${sample}_a4s2_ss_var_bulk_filtered_sifted.vcf
 grep -v rs ${sample}_a4s2_ss_var_bulk_filtered_sifted.vcf | grep -v "^#" > ${sample}_a4s2_ss_var_dbSNP_filtered.vcf
 rm ${sample}_a4s2_ss_var_bulk_filtered_sifted.vcf
 rm ${sample}_a4s2_ss_var_bulk_filtered_sorted.vcf
