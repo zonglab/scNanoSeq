@@ -36,7 +36,7 @@ grep ^# ${barcode}_var.raw.vcf > ${barcode}_vcf.header
 cat ${barcode}_vcf.header ${barcode}_var.notandem.body> ${barcode}_var.notandem.vcf
 rm ${barcode}_var.notandem.body
 
-bedtools intersect -a ${barcode}_var.notandem.vcf  -b cento.bed -v > ${barcode}_var.cleaned.body
+bedtools intersect -a ${barcode}_var.notandem.vcf  -b hg19_cento.bed -v > ${barcode}_var.cleaned.body
 
 rm ${barcode}_var.notandem.vcf
 rm ${barcode}_var.raw.vcf
