@@ -26,11 +26,25 @@ rm extrR1_trimmed.fastq.gz
 rm extrR2_trimmed.fastq.gz
 
 
-samtools view -@ 6 -b -q 50 -f 3 output.bwa.bam | samtools sort -@ 6 - > ${sample}_Nanoseq_sorted.bam
+samtools view -@ 6 -b -q 50 -f 3 output.bwa.bam | samtools sort -@ 6 - > ${sample}_Nanoseq_sorted0.bam
+
+samtools index -@ 6 ${sample}_Nanoseq_sorted0.bam
+
+rm output.bwa.bam
+
+picard MarkDuplicates \
+    I=${sample}_Nanoseq_sorted0.bam \
+    O=${sample}_Nanoseq_sorted.bam \
+    M=${sample}_optical_duplicate.txt \
+    TAGGING_POLICY=All \
+    OPTICAL_DUPLICATE_PIXEL_DISTANCE=12000 \
+    REMOVE_SEQUENCING_DUPLICATES=true
 
 samtools index -@ 6 ${sample}_Nanoseq_sorted.bam
 
-rm output.bwa.bam
+rm ${sample}_Nanoseq_sorted0.bam
+rm ${sample}_Nanoseq_sorted0.bam.bai
+
 
 
 #### sbatch 03
