@@ -1,7 +1,8 @@
 
 # Ginkgo CNV Calling Guide
 
-Welcome to the standalone version of Ginkgo for Copy Number Variation (CNV) calling. For more detailed information, please visit the [Ginkgo GitHub page](https://github.com/robertaboukhalil/ginkgo/blob/master/README.standalone).
+Welcome to the standalone version of Ginkgo for Copy Number Variation (CNV) calling. For more detailed information,   
+please visit the [Ginkgo GitHub page](https://github.com/robertaboukhalil/ginkgo/blob/master/README.standalone).
 
 ## Getting Started
 
@@ -61,5 +62,5 @@ cd ~/src/ginkgo/
 ## Additional Information
 
 We've also updated the critical CN calling script, `process.R`, which is available as `optimized_process.R` for enhanced performance.
-
-Feel free to explore and modify the configurations to suit your specific needs!
+Please note that we have removed the part for clustering and modified the output names to be more ordered and meaningful.
+However, this will not be compatible with the downstream analysis of Ginkgo pipeline.
