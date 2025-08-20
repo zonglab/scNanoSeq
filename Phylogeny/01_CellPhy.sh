@@ -27,7 +27,7 @@ echo xxxxxx/bulk/${patient_ID}/${patient_ID}.RG.markdup.bam >> zz_${patient_ID}_
 cat totalcellslist.txt| while read line 
 do
   cat xxxxxx/bulk/AAA_vcf.header ${data_dir}/${line}/${line}_a4s2_mutation_dbSNP_filtered.vcf > ${line}_a4s2_mutation_dbSNP_filtered_header.vcf
-  echo xxxxxx/${patient_ID}/${line}/${line}_Nanoseq_sorted.bam >> zz_${patient_ID}_bam_list.txt
+  echo xxxxxx/${patient_ID}/${line}/${line}_DuplexSeq_sorted.bam >> zz_${patient_ID}_bam_list.txt
 
 done
 
