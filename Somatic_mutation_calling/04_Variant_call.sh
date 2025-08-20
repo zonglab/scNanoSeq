@@ -53,7 +53,7 @@ rm ${barcode}_var.localseq.bed
 
 zcat ${barcode}_var.raw.vcf.gz | grep ^# > ${sample}_${barcode}_vcf.header
 
-python3 NanoSeq_Mutation_call_aMsN_for_hg19.py ${split_dir} ${barcode}_var.filtered.vcf.gz ${sample}_${barcode}.bam 4 2 ${sample}_${barcode}_a4s2_call.txt
+python3 DuplexSeq_Mutation_call_aMsN_for_hg19.py ${split_dir} ${barcode}_var.filtered.vcf.gz ${sample}_${barcode}.bam 4 2 ${sample}_${barcode}_a4s2_call.txt
 
 
 
