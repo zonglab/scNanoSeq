@@ -22,7 +22,7 @@ cd ${data_dir}
 
 
 mkdir -p ${split_dir}
-python3 bam_split_by_allele_barcode.py ${data_dir} ${sample}_Nanoseq_sorted.bam ${split_dir}/${sample}
+python3 bam_split_by_allele_barcode.py ${data_dir} ${sample}_DuplexSeq_sorted.bam ${split_dir}/${sample}
 
 
 
