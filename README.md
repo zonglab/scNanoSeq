@@ -46,30 +46,22 @@ scNanoSeq/
 The original analysis used:
 
 ```text
+cutadapt  5.0
 bwa       0.7.13-r1126
 samtools  1.12
 bcftools  1.12
+Picard    3.4.0.0
+bedtools  2.31.1
+seqtk     1.4
+SnpSift   4.1k
 Python    3.10
 R         4.4.3
+numpy     2.2.6
+pandas    2.2.3
+pysam     0.23.3
 ```
 
-The Python scripts additionally require the packages listed in [`requirements.txt`](requirements.txt):
-
-```text
-numpy
-pandas
-pysam
-```
-
-Exact historical versions of these Python packages were not recorded.
-
-The shell workflows also use `cutadapt`, `bedtools`, `seqtk`, Picard, Java/SnpSift, CellPhy, Ginkgo, and SLURM. The bulk and single-cell pipelines contain legacy samtools/bcftools syntax, so version changes should be validated before production use.
-
-To record the software versions in the current environment:
-
-```bash
-bash scripts/capture_versions.sh > software_versions.txt
-```
+The shell workflows also use CellPhy and Ginkgo. 
 
 ### External resources not bundled
 
