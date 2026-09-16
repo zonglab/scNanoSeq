@@ -10,7 +10,7 @@ bedtools intersect -a snp.total.hetero_header.vcf  -b hg19_tandem.bed -v > 1.bod
 cat vcf.header 1.body > 1.vcf
 
 
-bedtools intersect -a 1.vcf  -b cento.bed -v > snp.total.hetero.filtered1.vcf
+bedtools intersect -a 1.vcf  -b hg19_cento.bed -v > snp.total.hetero.filtered1.vcf
 
 
 

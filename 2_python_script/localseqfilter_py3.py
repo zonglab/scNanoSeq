@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 
-import csv
 import sys
-import pysam
 
 x1=sys.argv[1]
 x2=sys.argv[2]

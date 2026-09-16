@@ -1,6 +1,5 @@
 import sys
 import os
-import pandas as pd
 
 wd=sys.argv[1]
 sample_list_file=sys.argv[2]

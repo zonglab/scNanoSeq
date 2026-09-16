@@ -1,0 +1,28 @@
+# Editor / notebook artifacts
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+
+# Scheduler / temporary outputs
+slurm.*.out
+slurm.*.err
+*.tmp
+*.log
+
+# Demo runtime outputs
+demo/output/
+
+# Large sequencing outputs
+*.bam
+*.bai
+*.bcf
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.vcf.gz
+*.tbi
+
+# Local configuration / external tools
+config.local.sh
+.external/
