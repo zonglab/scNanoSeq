@@ -1,0 +1,5 @@
+# Python dependencies used by the current custom scripts.
+# Exact historical versions were not recorded in the repository.
+numpy
+pandas
+pysam

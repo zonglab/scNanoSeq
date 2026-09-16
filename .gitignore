@@ -1,28 +1,18 @@
-# Editor / notebook artifacts
-.ipynb_checkpoints/
+# Python
 __pycache__/
 *.py[cod]
 
-# Scheduler / temporary outputs
+# Jupyter/editor/OS
+.ipynb_checkpoints/
+.DS_Store
+*~
+
+# Scheduler logs
 slurm.*.out
 slurm.*.err
-*.tmp
-*.log
 
-# Demo runtime outputs
-demo/output/
+# Local demo work products
+demo/work/
 
-# Large sequencing outputs
-*.bam
-*.bai
-*.bcf
-*.fastq
-*.fastq.gz
-*.fq
-*.fq.gz
-*.vcf.gz
-*.tbi
-
-# Local configuration / external tools
-config.local.sh
-.external/
+# Local environment/version captures
+software_versions.txt

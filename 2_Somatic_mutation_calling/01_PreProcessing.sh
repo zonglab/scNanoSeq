@@ -23,7 +23,7 @@ cd ${data_dir}
 
 zcat ${seq_dir}/*1.fq.gz> R1.fastq
 zcat ${seq_dir}/*2.fq.gz> R2.fastq
-python2 extract_tags.py -a R1.fastq -b R2.fastq -c extrR1.fastq -d extrR2.fastq -m 3 -s 4 -l 150
+python3 extract_tags.py -a R1.fastq -b R2.fastq -c extrR1.fastq -d extrR2.fastq -m 3 -s 4 -l 150
 
 rm R1.fastq
 rm R2.fastq

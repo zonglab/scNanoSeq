@@ -1,2 +1,0 @@
-cellA
-cellB

@@ -1,0 +1,5 @@
+##fileformat=VCFv4.2
+##contig=<ID=chr1,length=300>
+##source=scNanoSeq_synthetic_demo
+#TAG	CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO
+Mutation	chr1	125	.	C	T	60	PASS	.	(0, 2, 0, 2)	(25, 76)	AAACCC

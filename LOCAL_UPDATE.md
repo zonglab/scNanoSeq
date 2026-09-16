@@ -1,81 +1,78 @@
-# Safely applying this review-ready folder to an existing Git clone
+# Replace an existing local clone with this refreshed working tree
 
-The review-ready bundle intentionally does **not** contain `.git`. Keep the `.git` directory from your existing clone so your history/remotes remain intact.
+The distributed ZIP intentionally excludes `.git`. This lets you keep the Git history/remotes from your existing clone while replacing only the working-tree files.
 
-## Recommended Linux/macOS/HPC procedure
+## Safest method: preserve `.git`, replace everything else
 
 Assume:
 
-- your existing clone is `/path/to/scNanoSeq`;
-- this bundle has been unzipped as `/path/to/scNanoSeq_review_ready`.
+```text
+/path/to/scNanoSeq/            # your existing git clone
+/path/to/scNanoSeq_refreshed/  # the extracted refreshed folder
+```
 
-First protect your current work:
+First inspect your existing clone:
 
 ```bash
 cd /path/to/scNanoSeq
 git status
-# If you have uncommitted work, commit it or stash it before continuing.
-git switch -c nature-software-checklist
-cd ..
-cp -a scNanoSeq scNanoSeq.backup-before-checklist
 ```
 
-Then mirror the review-ready contents **while preserving `.git`**:
+If you have local work you care about, commit it, stash it, or make a backup before continuing.
+
+Then replace the working tree while preserving `.git`:
 
 ```bash
-rsync -av --delete --exclude='.git' \
-  /path/to/scNanoSeq_review_ready/ \
-  /path/to/scNanoSeq/
+rsync -av --delete --exclude='.git/' /path/to/scNanoSeq_refreshed/ /path/to/scNanoSeq/
 ```
 
-`--delete` makes the working tree match the supplied bundle exactly. That is why the backup step exists. After copying:
+Now inspect exactly what changed:
 
 ```bash
 cd /path/to/scNanoSeq
 git status
+git diff -- README.md
+git diff -- 1_Bulk_WGS 2_Somatic_mutation_calling 2_python_script 3_Phylogeny 4_CNV
+```
+
+Because the uploaded snapshot had already reorganized the historical directory names into numbered directories, `git status` will show many old paths as deleted and numbered paths as new until you commit. Git may later recognize some of these as renames automatically.
+
+Run the repository checks:
+
+```bash
+bash scripts/repo_check.sh
+```
+
+If `samtools` and `pysam` are installed, run the core synthetic demo:
+
+```bash
+bash demo/run_core_demo.sh
+```
+
+After reviewing the changes:
+
+```bash
 git add -A
-git diff --cached --stat
+git status
 git diff --cached
 ```
 
-Review the diff before committing. In particular, confirm whether removal of the historical `Simulation/` and `VAF_fingerprint/` directories is intentional. Those directories exist on the current public `main` branch but were absent from the uploaded working tree used to prepare this bundle.
-
-When satisfied:
+Commit only when the staged diff matches what you intend to publish:
 
 ```bash
-git commit -m "Prepare scNanoSeq for software review"
-git push -u origin nature-software-checklist
+git commit -m "Document scNanoSeq pipeline and add minimal synthetic demo"
+git push origin main
 ```
 
-Merge to `main` only after you have supplied the remaining AUTHOR ACTION REQUIRED items.
+## If you want to keep the old directory layout instead
 
-## Safer non-destructive copy
+Do not use `rsync --delete`. Copy only the new documentation/demo files and manually port the two small script fixes. The refreshed package follows the numbered layout present in the uploaded ZIP, not the historical layout stored at Git commit `2f1c8cb`.
 
-If you do not want any existing file deleted automatically, omit `--delete`:
+## Files that should not be overwritten blindly
 
-```bash
-rsync -av --exclude='.git' /path/to/scNanoSeq_review_ready/ /path/to/scNanoSeq/
-```
+Before publishing, pay special attention to:
 
-This will leave obsolete directories/files in place, so you must remove or reconcile them manually before committing.
-
-## Windows PowerShell / Robocopy
-
-From a PowerShell prompt, after creating a backup and a new Git branch:
-
-```powershell
-robocopy C:\path\to\scNanoSeq_review_ready C:\path\to\scNanoSeq /MIR /XD .git
-```
-
-`/MIR` deletes destination files not present in the source bundle, so use it only after making the backup and checking that you want an exact mirror.
-
-## Validation after replacement
-
-Run:
-
-```bash
-python3 demo/run_demo.py
-python3 scripts/reviewer_preflight.py
-```
-
-The demo should pass. The preflight is expected to remain non-zero until the project license and missing `gtbulksearch_py3.py` are supplied; those failures are deliberate rather than hidden.
+- any locally recovered `gtbulksearch_py3.py`;
+- any real project-specific path configuration;
+- an existing top-level `LICENSE` or `CITATION.cff` that was not present in the uploaded ZIP; and
+- any unpublished analysis scripts or data that exist only in your local clone.
