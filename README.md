@@ -27,7 +27,7 @@ scNanoSeq/
 │   ├── DuplexSeq_Mutation_call_aMsN_for_hg19.py
 │   ├── bam_split_by_allele_barcode.py
 │   ├── de_novo_loci.py
-│   ├── extract_tags.py            # placeholder; fetched from pinned NanoSeq revision
+│   ├── extract_tags.py
 │   └── localseqfilter_py3.py
 ├── 3_Phylogeny/
 │   └── 01_CellPhy.sh
@@ -73,13 +73,6 @@ SnpSift.jar
 dbSNP/All_20151104.vcf for hg19
 CellPhy installation
 Ginkgo installation and genome-bin resources
-NanoSeq extract_tags.py
-```
-
-The pinned NanoSeq helper can be retrieved with:
-
-```bash
-bash 2_python_script/fetch_nanoseq_extract_tags.sh
 ```
 
 ## 3. Input conventions
