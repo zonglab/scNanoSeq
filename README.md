@@ -335,7 +335,11 @@ zout_06_CN__close_min.tsv
 
 Ginkgo's BAM-to-bin preprocessing is not reimplemented here. See `4_CNV/README.md` for setup details.
 
-## 5. Third-party software and citation
+## 5. Test data
+
+A demo data was included cropped from MCF10A chr20. Allowing the analysis to go from raw fastq as well as from processed bam.
+
+## 6. Third-party software and citation
 
 Please cite the underlying methods and software as appropriate, including NanoSeq/Duplex Sequencing, CellPhy, Ginkgo, BWA, samtools/bcftools, Picard, bedtools, cutadapt, and SnpSift.
 

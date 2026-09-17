@@ -62,5 +62,4 @@ cd ~/src/ginkgo/
 ## Additional Information
 
 We've also updated the critical CN calling script, `process.R`, which is available as `modified_process.R` for enhanced performance.
-Please note that we have removed the part for clustering and modified the output names to be more ordered and meaningful.
-However, this will not be compatible with the downstream analysis of Ginkgo pipeline.
+Please note that we have removed the part for clustering and modified the output names that separates from the original Ginkgo pipeline.
