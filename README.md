@@ -41,7 +41,7 @@ scNanoSeq/
 
 ## 2. Software and external resources
 
-### Recorded core environment
+### Core dependency versions
 
 The original analysis used:
 
@@ -60,8 +60,6 @@ numpy     2.2.6
 pandas    2.2.3
 pysam     0.23.3
 ```
-
-The shell workflows also use CellPhy and Ginkgo. 
 
 ### External resources not bundled
 
